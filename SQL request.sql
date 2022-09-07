@@ -1,7 +1,4 @@
-select PRODUCTSTABLE.PRODUCTNAME, CATEGORYTABLE.CATEGORYNAME
-from PRODUCTSTABLE, CATEGORYTABLE
-where CATEGORYTABLE.PRODUCTID = PRODUCTSTABLE.ID
-union
-select PRODUCTSTABLE.PRODUCTNAME, 'без категории' as CATEGORYNAME
-from PRODUCTSTABLE
-where PRODUCTSTABLE.ID not in (select CATEGORYTABLE.PRODUCTID from CATEGORYTABLE)     
+select productstable.productame, categorytable.categoryname
+from productstable
+left join categorytable
+on productstable.id = categorytable.productid 
